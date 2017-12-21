@@ -27,7 +27,7 @@ int main()
 	}
 	std::cout << std::endl;
 	system("pause");
-    return 0;
+  return 0;
 }
 
 int getMax(int a[], int n)
