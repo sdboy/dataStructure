@@ -4,12 +4,13 @@
 #include "stdafx.h"
 #include "BucketSort.h"
 #include "RadixSort.h"
+#include "MergeSort.h"
 
 
 int main()
 {
-  BucketSort bs;
-  bs.startBucketSort();
+  MergeSort ms;
+  ms.startMergeSort();
   return 0;
 }
 
