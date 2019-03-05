@@ -9,6 +9,7 @@
 #include "FindNum.h"
 #include "FindInArray.h"
 #include "ReplaceSpace.h"
+#include "ListNode.h"
 
 
 int main()
@@ -26,9 +27,15 @@ int main()
   /*FindInArray fia;
   bool flag = fia.find(target, arr, row, col);
   std::cout << flag << std::endl;*/
-  ReplaceSpace rs;
+  /*ReplaceSpace rs;
   std::string str = "234343 23432 234324 234";
-  std::cout << rs.replaceSpace(str) << std::endl;
+  std::cout << rs.replaceSpace(str) << std::endl;*/
+  int input[] = { 1,3,4,5,7,9,29 };
+  int len = sizeof(input) / sizeof(int);
+  ListNode ln;
+  ListNode *listNode = ln.buildList(input, len);
+  ln.reversalPrint(listNode);
+  delete listNode;
   return 0;
 }
 

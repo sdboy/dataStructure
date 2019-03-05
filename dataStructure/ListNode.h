@@ -10,7 +10,7 @@ public:
   void ListNode::setNext(ListNode *next);
   ListNode * ListNode::getNext();
 
-  ListNode *ListNode::buildList(int arr[]);
+  ListNode *ListNode::buildList(int arr[], int len);
 
   void ListNode::reversalPrint(ListNode *listNode);
 

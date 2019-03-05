@@ -37,20 +37,20 @@ void ListNode::setNext(ListNode *next)
   this->next = next;
 }
 
-ListNode *ListNode::buildList(int arr[]) 
+ListNode *ListNode::buildList(int arr[], int len) 
 {
-  int len = sizeof(arr) / sizeof(arr[0]);
   ListNode *first = nullptr, *nextNode = nullptr, *newNode = nullptr;
   for (int i = 0; i < len; i++) 
   {
     if (first == nullptr) {
-      *first = ListNode(arr[i], nullptr);
+      first = new ListNode(arr[i], nullptr);
       nextNode = first;
     }
     else
     {
-      *newNode = ListNode(arr[i], nullptr);
+      newNode = new ListNode(arr[i], nullptr);
       nextNode->setNext(newNode);
+      nextNode = nextNode->getNext();
     }
   }
   return first;
@@ -61,6 +61,7 @@ void ListNode::reversalPrint(ListNode *listNode)
   if (listNode == nullptr) {
     return;
   }
+  ListNode *next = listNode->getNext();
+  reversalPrint(next);
   std::cout << listNode->getVal() << std::endl;
-
 }
