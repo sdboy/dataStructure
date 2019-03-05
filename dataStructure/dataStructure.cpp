@@ -10,7 +10,7 @@
 #include "FindInArray.h"
 #include "ReplaceSpace.h"
 #include "ListNode.h"
-
+#include "QuickSort.h"
 
 int main()
 {
@@ -30,12 +30,18 @@ int main()
   /*ReplaceSpace rs;
   std::string str = "234343 23432 234324 234";
   std::cout << rs.replaceSpace(str) << std::endl;*/
-  int input[] = { 1,3,4,5,7,9,29 };
-  int len = sizeof(input) / sizeof(int);
+  int input[] = { 8,3,4,5,7,9,29 };
+  /*int len = sizeof(input) / sizeof(int);
   ListNode ln;
   ListNode *listNode = ln.buildList(input, len);
   ln.reversalPrint(listNode);
-  delete listNode;
+  delete listNode;*/
+  QuickSort qs;
+  qs.sort(input, 0, 6);
+  for (int i = 0; i < 7; i++)
+  {
+    std::cout << input[i] << std::endl;
+  }
   return 0;
 }
 
