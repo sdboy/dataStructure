@@ -62,10 +62,6 @@ BinaryTree * BinaryTree::buildTree(int pre[], int preLen, int in[], int inLen)
 
 BinaryTree * BinaryTree::buildTree(int pre[], int preL, int preR, int inL, std::map<int, int> &indexForInOrder)
 {
-  if (preL > preR)
-  {
-    return nullptr;
-  }
   BinaryTree *root = new BinaryTree(pre[preL], nullptr, nullptr);
 
   std::map<int, int>::iterator iter;
@@ -80,12 +76,20 @@ BinaryTree * BinaryTree::buildTree(int pre[], int preL, int preR, int inL, std::
     return nullptr;
   }
   int leftTreeSize = index - inL;
-  BinaryTree *left = buildTree(pre, preL + 1, leftTreeSize, inL, indexForInOrder);
+  BinaryTree *left = nullptr;
+  if (preL + 1 <= preL + leftTreeSize)
+  {
+    left = buildTree(pre, preL + 1, preL + leftTreeSize, inL, indexForInOrder);
+  }
   if (left != nullptr)
   {
     root->setLeft(left);
   }
-  BinaryTree *right = buildTree(pre, preL + leftTreeSize + 1, preR, inL + leftTreeSize + 1, indexForInOrder);
+  BinaryTree *right = nullptr;
+  if (preL + leftTreeSize + 1 <= preR)
+  {
+    right = buildTree(pre, preL + leftTreeSize + 1, preR, inL + leftTreeSize + 1, indexForInOrder);
+  }
   if (right != nullptr)
   {
     root->setRight(right);
