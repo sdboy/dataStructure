@@ -31,7 +31,7 @@ int main()
   /*ReplaceSpace rs;
   std::string str = "234343 23432 234324 234";
   std::cout << rs.replaceSpace(str) << std::endl;*/
-  int input[] = { 8,3,4,5,7,9,29 };
+  //int input[] = { 8,3,4,5,7,9,29 };
   /*int len = sizeof(input) / sizeof(int);
   ListNode ln;
   ListNode *listNode = ln.buildList(input, len);
@@ -43,9 +43,12 @@ int main()
   {
     std::cout << input[i] << std::endl;
   }*/
+  int preOrder[] = { 3, 9, 20, 15, 7 };
+  int inOrder[] = { 9, 3, 15, 20, 7 };
   BinaryTree bt;
-  BinaryTree *tree = bt.buildTree(input);
-
+  BinaryTree *root = bt.buildTree(preOrder, 5, inOrder, 5);
+  delete root;
+  root = nullptr;
   return 0;
 }
 

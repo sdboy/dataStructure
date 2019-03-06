@@ -56,8 +56,8 @@ BinaryTree * BinaryTree::buildTree(int pre[], int preLen, int in[], int inLen)
   {
     indexForInOrder.insert(std::map<int, int>::value_type(in[i], i));
   }
-  buildTree(pre, 0, preLen - 1, 0, indexForInOrder);
-
+  BinaryTree *root = buildTree(pre, 0, preLen - 1, 0, indexForInOrder);
+  return root;
 }
 
 BinaryTree * BinaryTree::buildTree(int pre[], int preL, int preR, int inL, std::map<int, int> &indexForInOrder)
