@@ -11,6 +11,7 @@
 #include "ReplaceSpace.h"
 #include "ListNode.h"
 #include "QuickSort.h"
+#include "BinaryTree.h"
 
 int main()
 {
@@ -36,12 +37,15 @@ int main()
   ListNode *listNode = ln.buildList(input, len);
   ln.reversalPrint(listNode);
   delete listNode;*/
-  QuickSort qs;
+  /*QuickSort qs;
   qs.sort(input, 0, 6);
   for (int i = 0; i < 7; i++)
   {
     std::cout << input[i] << std::endl;
-  }
+  }*/
+  BinaryTree bt;
+  BinaryTree *tree = bt.buildTree(input);
+
   return 0;
 }
 

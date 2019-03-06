@@ -146,6 +146,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="BucketSort.h" />
     <ClInclude Include="FindInArray.h" />
     <ClInclude Include="FindNum.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="BucketSort.cpp" />
     <ClCompile Include="dataStructure.cpp" />
     <ClCompile Include="FindInArray.cpp" />
