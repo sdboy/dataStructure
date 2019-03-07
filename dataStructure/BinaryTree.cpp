@@ -99,15 +99,60 @@ BinaryTree * BinaryTree::buildTree(int pre[], int preL, int preR, int inL, std::
 
 void BinaryTree::preOrderTraversal(BinaryTree *binaryTree)
 {
-
+  if (binaryTree == nullptr)
+  {
+    return;
+  }
+  std::cout << binaryTree->getVal() << std::endl;
+  BinaryTree *left = binaryTree->getLeft();
+  if (left != nullptr)
+  {
+    preOrderTraversal(left);
+  }
+  BinaryTree *right = binaryTree->getRight();
+  if (right != nullptr)
+  {
+    preOrderTraversal(right);
+  }
+  return;
 }
 
 void BinaryTree::inOrderTraversal(BinaryTree *binaryTree)
 {
-
+  if (binaryTree == nullptr)
+  {
+    return;
+  }
+  BinaryTree *left = binaryTree->getLeft();
+  if (left != nullptr)
+  {
+    inOrderTraversal(left);
+  }
+  std::cout << binaryTree->getVal() << std::endl;
+  BinaryTree *right = binaryTree->getRight();
+  if (right != nullptr)
+  {
+    inOrderTraversal(right);
+  }
+  return;
 }
 
 void BinaryTree::postOrderTraversal(BinaryTree *binaryTree)
 {
-
+  if (binaryTree == nullptr)
+  {
+    return;
+  }
+  BinaryTree *left = binaryTree->getLeft();
+  if (left != nullptr)
+  {
+    inOrderTraversal(left);
+  }
+  BinaryTree *right = binaryTree->getRight();
+  if (right != nullptr)
+  {
+    inOrderTraversal(right);
+  }
+  std::cout << binaryTree->getVal() << std::endl;
+  return;
 }

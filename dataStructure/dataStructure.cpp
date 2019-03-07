@@ -47,6 +47,12 @@ int main()
   int inOrder[] = { 9, 3, 15, 20, 7 };
   BinaryTree bt;
   BinaryTree *root = bt.buildTree(preOrder, 5, inOrder, 5);
+  std::cout << "前序遍历" << std::endl;
+  bt.preOrderTraversal(root);
+  std::cout << "中序遍历" << std::endl;
+  bt.inOrderTraversal(root);
+  std::cout << "后序遍历" << std::endl;
+  bt.postOrderTraversal(root);
   delete root;
   root = nullptr;
   return 0;
