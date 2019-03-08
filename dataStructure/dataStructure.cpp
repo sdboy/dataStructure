@@ -47,14 +47,25 @@ int main()
   int inOrder[] = { 9, 3, 15, 20, 7 };
   BinaryTree bt;
   BinaryTree *root = bt.buildTree(preOrder, 5, inOrder, 5);
-  std::cout << "前序遍历" << std::endl;
+  /*std::cout << "前序遍历" << std::endl;
   bt.preOrderTraversal(root);
   std::cout << "中序遍历" << std::endl;
   bt.inOrderTraversal(root);
   std::cout << "后序遍历" << std::endl;
-  bt.postOrderTraversal(root);
+  bt.postOrderTraversal(root);*/
+  BinaryTree *pNode = root->getRight()->getLeft();
+  BinaryTree *next = bt.findNext(pNode);
+  if (next == nullptr)
+  {
+    std::cout << "no next node" << std::endl;
+  }
+  else
+  {
+    std::cout << next->getVal() << std::endl;
+  }
   delete root;
   root = nullptr;
+
   return 0;
 }
 

@@ -19,6 +19,14 @@ BinaryTree::BinaryTree(int val, BinaryTree *left, BinaryTree *right)
   this->right = right;
 }
 
+BinaryTree::BinaryTree(int val, BinaryTree *left, BinaryTree *right, BinaryTree *parent)
+{
+  this->val = val;
+  this->left = left;
+  this->right = right;
+  this->parent = parent;
+}
+
 void BinaryTree::setVal(int val)
 {
   this->val = val;
@@ -49,6 +57,15 @@ BinaryTree *BinaryTree::getRight()
   return this->right;
 }
 
+void BinaryTree::setParent(BinaryTree *parent)
+{
+  this->parent = parent;
+}
+BinaryTree *BinaryTree::getParent()
+{
+  return this->parent;
+}
+
 BinaryTree * BinaryTree::buildTree(int pre[], int preLen, int in[], int inLen)
 {
   std::map<int, int> indexForInOrder;
@@ -56,7 +73,7 @@ BinaryTree * BinaryTree::buildTree(int pre[], int preLen, int in[], int inLen)
   {
     indexForInOrder.insert(std::map<int, int>::value_type(in[i], i));
   }
-  BinaryTree *root = buildTree(pre, 0, preLen - 1, 0, indexForInOrder);
+  BinaryTree *root = buildTree(pre, 0, preLen - 1, 0, indexForInOrder, nullptr);
   return root;
 }
 
@@ -93,6 +110,47 @@ BinaryTree * BinaryTree::buildTree(int pre[], int preL, int preR, int inL, std::
   if (right != nullptr)
   {
     root->setRight(right);
+  }
+  return root;
+}
+
+BinaryTree * BinaryTree::buildTree(int pre[], int preL, int preR, int inL, std::map<int, int> &indexForInOrder, BinaryTree *parent)
+{
+  BinaryTree *root = new BinaryTree(pre[preL], nullptr, nullptr);
+
+  std::map<int, int>::iterator iter;
+  int index;
+  iter = indexForInOrder.find(pre[preL]);
+  if (iter != indexForInOrder.end())
+  {
+    index = iter->second;
+  }
+  else
+  {
+    return nullptr;
+  }
+  int leftTreeSize = index - inL;
+  BinaryTree *left = nullptr;
+  if (preL + 1 <= preL + leftTreeSize)
+  {
+    left = buildTree(pre, preL + 1, preL + leftTreeSize, inL, indexForInOrder, root);
+  }
+  if (left != nullptr)
+  {
+    root->setLeft(left);
+  }
+  BinaryTree *right = nullptr;
+  if (preL + leftTreeSize + 1 <= preR)
+  {
+    right = buildTree(pre, preL + leftTreeSize + 1, preR, inL + leftTreeSize + 1, indexForInOrder, root);
+  }
+  if (right != nullptr)
+  {
+    root->setRight(right);
+  }
+  if (parent != nullptr)
+  {
+    root->setParent(parent);
   }
   return root;
 }
@@ -155,4 +213,38 @@ void BinaryTree::postOrderTraversal(BinaryTree *binaryTree)
   }
   std::cout << binaryTree->getVal() << std::endl;
   return;
+}
+
+BinaryTree *BinaryTree::findNext(BinaryTree *pNode)
+{
+  BinaryTree *right = pNode->getRight();
+  if (right != nullptr)
+  {
+    return findLeft(right);
+  }
+  else
+  {
+    BinaryTree *parent = pNode->getParent();
+    if (parent != nullptr)
+    {
+      return parent;
+    }
+    else
+    {
+      return nullptr;
+    }
+  }
+}
+
+BinaryTree *BinaryTree::findLeft(BinaryTree *pNode)
+{
+  BinaryTree *left = pNode->getLeft();
+  if (left != nullptr)
+  {
+    findLeft(left);
+  }
+  else
+  {
+    return pNode;
+  }
 }
