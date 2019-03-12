@@ -8,7 +8,7 @@ private:
 public:
   Queue();
   virtual ~Queue();
-  int Queue::push(int num);
+  void Queue::push(int num);
   int Queue::pop();
 };
 

@@ -12,6 +12,7 @@
 #include "ListNode.h"
 #include "QuickSort.h"
 #include "BinaryTree.h"
+#include "Queue.h"
 
 int main()
 {
@@ -43,17 +44,17 @@ int main()
   {
     std::cout << input[i] << std::endl;
   }*/
-  int preOrder[] = { 3, 9, 20, 15, 7 };
+  /*int preOrder[] = { 3, 9, 20, 15, 7 };
   int inOrder[] = { 9, 3, 15, 20, 7 };
   BinaryTree bt;
-  BinaryTree *root = bt.buildTree(preOrder, 5, inOrder, 5);
+  BinaryTree *root = bt.buildTree(preOrder, 5, inOrder, 5);*/
   /*std::cout << "前序遍历" << std::endl;
   bt.preOrderTraversal(root);
   std::cout << "中序遍历" << std::endl;
   bt.inOrderTraversal(root);
   std::cout << "后序遍历" << std::endl;
   bt.postOrderTraversal(root);*/
-  BinaryTree *pNode = root->getRight()->getLeft();
+  /*BinaryTree *pNode = root->getRight()->getLeft();
   BinaryTree *next = bt.findNext(pNode);
   if (next == nullptr)
   {
@@ -64,8 +65,24 @@ int main()
     std::cout << next->getVal() << std::endl;
   }
   delete root;
-  root = nullptr;
-
+  root = nullptr;*/
+  Queue queue;
+  queue.push(2);
+  queue.push(3);
+  queue.push(0);
+  int a = queue.pop();
+  int b = queue.pop();
+  int c = queue.pop();
+  int d = queue.pop();
+  if (c == NULL)
+  {
+    std::cout << "cend" << std::endl;
+  }
+  if (d == NULL)
+  {
+    std::cout << "end" << std::endl;
+  }
+  std::cout << a << b << c << std::endl;
   return 0;
 }
 

@@ -11,23 +11,24 @@ Queue::~Queue()
 {
 }
 
-int Queue::push(int num)
+void Queue::push(int num)
 {
   // 如果进栈为空
-  if (this->in.empty)
+  if (this->in.empty())
   {
     // 如果出栈不为空
-    if (!this->out.empty)
+    if (!this->out.empty())
     {
-      while (!this->out.empty)
+      while (!this->out.empty())
       {
         this->in.push(out.top());
         out.pop();
       }
     }
-    while (!this->in.empty)
+    in.push(num);
+    while (!this->in.empty())
     {
-      this->out.push(in.top);
+      this->out.push(in.top());
       in.pop();
     }
   }
@@ -35,5 +36,11 @@ int Queue::push(int num)
 
 int Queue::pop()
 {
-
+  int result = NULL;
+  if (!this->out.empty())
+  {
+    result = this->out.top();
+    this->out.pop();
+  }
+  return result;
 }
