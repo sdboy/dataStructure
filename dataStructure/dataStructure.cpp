@@ -14,6 +14,7 @@
 #include "BinaryTree.h"
 #include "Queue.h"
 #include "FibonacciSequence.h"
+#include "FindInRotateArray.h"
 
 int main()
 {
@@ -84,9 +85,13 @@ int main()
     std::cout << "end" << std::endl;
   }
   std::cout << a << b << c << std::endl;*/
-  FibonacciSequence fs;
+  /*FibonacciSequence fs;
   int sum = fs.dynamicProgramming(7);
-  std::cout << sum << std::endl;
+  std::cout << sum << std::endl;*/
+  FindInRotateArray fra;
+  int arr[5] = { 3,4,5,1,2 };
+  int min = fra.getMinLoop(arr, 0, 4);
+  std::cout << min << std::endl;
   return 0;
 }
 

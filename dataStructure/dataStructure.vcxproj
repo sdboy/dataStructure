@@ -150,6 +150,7 @@
     <ClInclude Include="BucketSort.h" />
     <ClInclude Include="FibonacciSequence.h" />
     <ClInclude Include="FindInArray.h" />
+    <ClInclude Include="FindInRotateArray.h" />
     <ClInclude Include="FindNum.h" />
     <ClInclude Include="ListNode.h" />
     <ClInclude Include="MergeSort.h" />
@@ -166,6 +167,7 @@
     <ClCompile Include="dataStructure.cpp" />
     <ClCompile Include="FibonacciSequence.cpp" />
     <ClCompile Include="FindInArray.cpp" />
+    <ClCompile Include="FindInRotateArray.cpp" />
     <ClCompile Include="FindNum.cpp" />
     <ClCompile Include="ListNode.cpp" />
     <ClCompile Include="MergeSort.cpp" />
