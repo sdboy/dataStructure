@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="BucketSort.h" />
+    <ClInclude Include="FibonacciSequence.h" />
     <ClInclude Include="FindInArray.h" />
     <ClInclude Include="FindNum.h" />
     <ClInclude Include="ListNode.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="BucketSort.cpp" />
     <ClCompile Include="dataStructure.cpp" />
+    <ClCompile Include="FibonacciSequence.cpp" />
     <ClCompile Include="FindInArray.cpp" />
     <ClCompile Include="FindNum.cpp" />
     <ClCompile Include="ListNode.cpp" />

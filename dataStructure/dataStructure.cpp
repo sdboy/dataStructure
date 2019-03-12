@@ -13,6 +13,7 @@
 #include "QuickSort.h"
 #include "BinaryTree.h"
 #include "Queue.h"
+#include "FibonacciSequence.h"
 
 int main()
 {
@@ -66,7 +67,7 @@ int main()
   }
   delete root;
   root = nullptr;*/
-  Queue queue;
+  /*Queue queue;
   queue.push(2);
   queue.push(3);
   queue.push(0);
@@ -82,7 +83,10 @@ int main()
   {
     std::cout << "end" << std::endl;
   }
-  std::cout << a << b << c << std::endl;
+  std::cout << a << b << c << std::endl;*/
+  FibonacciSequence fs;
+  int sum = fs.dynamicProgramming(7);
+  std::cout << sum << std::endl;
   return 0;
 }
 
