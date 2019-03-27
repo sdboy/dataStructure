@@ -15,5 +15,6 @@ public:
   void TreeProcedure::preOrderTraversal(RedBlackTree *redBlackTree);
   void TreeProcedure::inOrderTraversal(RedBlackTree *redBlackTree);
   void TreeProcedure::postOrderTraversal(RedBlackTree *redBlackTree);
+  void TreeProcedure::fixup(RedBlackTree *redBlackTree, RedBlackTree *node);
 };
 

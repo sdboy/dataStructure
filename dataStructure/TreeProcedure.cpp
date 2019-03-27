@@ -32,6 +32,7 @@ void TreeProcedure::add(int num)
 void TreeProcedure::put(int num, RedBlackTree *parent)
 {
   int pValue = parent->getValue();
+  RedBlackTree *node = new RedBlackTree();
   if (pValue < num)
   {
     if (parent->getRight() != nullptr)
@@ -40,8 +41,11 @@ void TreeProcedure::put(int num, RedBlackTree *parent)
     }
     else
     {
-      RedBlackTree *node = new RedBlackTree(num, false, parent, nullptr, nullptr);
+      node->setColor(false);
+      node->setValue(num);
+      node->setParent(parent);
       parent->setRight(node);
+      fixup(this->root, node);
     }
   }
   else
@@ -52,10 +56,14 @@ void TreeProcedure::put(int num, RedBlackTree *parent)
     }
     else
     {
-      RedBlackTree *node = new RedBlackTree(num, false, parent, nullptr, nullptr);
+      node->setColor(false);
+      node->setValue(num);
+      node->setParent(parent);
       parent->setLeft(node);
+      fixup(this->root, node);
     }
   }
+
   return;
 }
 RedBlackTree *TreeProcedure::buildRedBlackTree(int arr[], int len)
@@ -126,4 +134,55 @@ void TreeProcedure::postOrderTraversal(RedBlackTree *redBlackTree)
   }
   std::cout << redBlackTree->getValue() << std::endl;
   return;
+}
+void TreeProcedure::fixup(RedBlackTree *redBlackTree, RedBlackTree *node)
+{
+  if (redBlackTree == nullptr || node == nullptr)
+  {
+    return;
+  }
+  RedBlackTree *parent = node->getParent();
+  while (parent->getColor() == false)
+  {
+    RedBlackTree *grandParent = parent->getParent();
+    RedBlackTree *uncle = nullptr;
+    if (parent == grandParent->getLeft())
+    {
+      uncle = grandParent->getRight();
+      if (uncle->getColor() == false)
+      {
+        parent->setColor(true);
+        uncle->setColor(true);
+        grandParent->setColor(false);
+        node = grandParent;
+      }
+      else if(node == parent->getRight())
+      {
+        node = parent;
+        // ×óÐý
+        parent->setColor(true);
+        grandParent->setColor(false);
+        // ÓÒÐý
+      }
+    }
+    else
+    {
+      uncle = grandParent->getLeft();
+      if (uncle->getColor() == false)
+      {
+        parent->setColor(true);
+        uncle->setColor(true);
+        grandParent->setColor(false);
+        node = grandParent;
+      }
+      else if (node == parent->getLeft())
+      {
+        node = parent;
+        // ×óÐý
+        parent->setColor(true);
+        grandParent->setColor(false);
+        // ÓÒÐý
+      }
+    }
+  }
 }

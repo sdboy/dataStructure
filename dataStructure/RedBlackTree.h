@@ -4,9 +4,9 @@ class RedBlackTree
 private:
   int value;
   bool color;
-  RedBlackTree *parent;
-  RedBlackTree *left;
-  RedBlackTree *right;
+  RedBlackTree *parent = nullptr;
+  RedBlackTree *left = nullptr;
+  RedBlackTree *right = nullptr;
 public:
   RedBlackTree();
   virtual ~RedBlackTree();

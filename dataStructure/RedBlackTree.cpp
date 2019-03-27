@@ -9,9 +9,9 @@ RedBlackTree::RedBlackTree()
 
 RedBlackTree::~RedBlackTree()
 {
-  delete this->parent;
+  /*delete this->parent;
   delete this->left;
-  delete this->right;
+  delete this->right;*/
 }
 
 RedBlackTree::RedBlackTree(int value, bool color, RedBlackTree *parent, RedBlackTree *left, RedBlackTree *right)

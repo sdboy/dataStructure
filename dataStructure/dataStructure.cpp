@@ -98,6 +98,7 @@ int main()
   int arr[] = { 7, 2, 8, 6, 9, 12, 4 };
   RedBlackTree *root = tp.buildRedBlackTree(arr, 7);
   tp.inOrderTraversal(root);
+  delete root;
   return 0;
 }
 
