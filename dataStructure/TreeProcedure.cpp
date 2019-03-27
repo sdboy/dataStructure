@@ -41,11 +41,12 @@ void TreeProcedure::put(int num, RedBlackTree *parent)
     }
     else
     {
+      // 插入节点为红色，这样只会影响特性4
       node->setColor(false);
       node->setValue(num);
       node->setParent(parent);
       parent->setRight(node);
-      fixup(this->root, node);
+      fixup(node);
     }
   }
   else
@@ -60,7 +61,7 @@ void TreeProcedure::put(int num, RedBlackTree *parent)
       node->setValue(num);
       node->setParent(parent);
       parent->setLeft(node);
-      fixup(this->root, node);
+      fixup(node);
     }
   }
 
@@ -135,17 +136,21 @@ void TreeProcedure::postOrderTraversal(RedBlackTree *redBlackTree)
   std::cout << redBlackTree->getValue() << std::endl;
   return;
 }
-void TreeProcedure::fixup(RedBlackTree *redBlackTree, RedBlackTree *node)
+void TreeProcedure::fixup(RedBlackTree *node)
 {
-  if (redBlackTree == nullptr || node == nullptr)
+  if (node == nullptr)
   {
     return;
   }
   RedBlackTree *parent = node->getParent();
+  // 当父节点是黑色时加入红色节点不影响特性5成立，当为红色时可能影响
   while (parent->getColor() == false)
   {
+    // 祖父节点
     RedBlackTree *grandParent = parent->getParent();
+    // 叔叔节点
     RedBlackTree *uncle = nullptr;
+    // 如果父节点是祖父节点的左孩子
     if (parent == grandParent->getLeft())
     {
       uncle = grandParent->getRight();
@@ -165,6 +170,7 @@ void TreeProcedure::fixup(RedBlackTree *redBlackTree, RedBlackTree *node)
         // 右旋
       }
     }
+    // 如果是右孩子
     else
     {
       uncle = grandParent->getLeft();
