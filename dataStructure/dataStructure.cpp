@@ -15,6 +15,8 @@
 #include "Queue.h"
 #include "FibonacciSequence.h"
 #include "FindInRotateArray.h"
+#include "RedBlackTree.h"
+#include "TreeProcedure.h"
 
 int main()
 {
@@ -88,10 +90,14 @@ int main()
   /*FibonacciSequence fs;
   int sum = fs.dynamicProgramming(7);
   std::cout << sum << std::endl;*/
-  FindInRotateArray fra;
+  /*FindInRotateArray fra;
   int arr[5] = { 3,4,5,1,2 };
   int min = fra.getMinLoop(arr, 0, 4);
-  std::cout << min << std::endl;
+  std::cout << min << std::endl;*/
+  TreeProcedure tp;
+  int arr[] = { 7, 2, 8, 6, 9, 12, 4 };
+  RedBlackTree *root = tp.buildRedBlackTree(arr, 7);
+  tp.inOrderTraversal(root);
   return 0;
 }
 

@@ -60,6 +60,12 @@
     <ClInclude Include="FindInRotateArray.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="RedBlackTree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeProcedure.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -102,6 +108,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="FindInRotateArray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RedBlackTree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeProcedure.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
