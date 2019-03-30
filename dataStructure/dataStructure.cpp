@@ -95,8 +95,10 @@ int main()
   int min = fra.getMinLoop(arr, 0, 4);
   std::cout << min << std::endl;*/
   TreeProcedure tp;
-  int arr[] = { 7, 2, 8, 6, 9, 12, 4 };
-  RedBlackTree *root = tp.buildRedBlackTree(arr, 7);
+  int arr[] = { 7, 2, 3, 4, 6, 11, 9, 12, 14, 18, 17, 19, 20, 22 };
+  RedBlackTree *root = tp.buildRedBlackTree(arr, 14);
+  RedBlackTree *node = root->getRight();
+  tp.leftRotate(node);
   tp.inOrderTraversal(root);
   delete root;
   return 0;
