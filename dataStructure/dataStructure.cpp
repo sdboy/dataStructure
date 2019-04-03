@@ -97,8 +97,6 @@ int main()
   TreeProcedure tp;
   int arr[] = { 7, 2, 3, 4, 6, 11, 9, 12, 14, 18, 17, 19, 20, 22 };
   RedBlackTree *root = tp.buildRedBlackTree(arr, 14);
-  RedBlackTree *node = root->getRight();
-  tp.leftRotate(node);
   tp.inOrderTraversal(root);
   delete root;
   return 0;
