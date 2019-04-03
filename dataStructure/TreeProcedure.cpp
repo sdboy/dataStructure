@@ -113,7 +113,11 @@ void TreeProcedure::inOrderTraversal(RedBlackTree *redBlackTree)
   {
     inOrderTraversal(left);
   }
-  std::cout << redBlackTree->getValue() << std::endl;
+  if (redBlackTree->getParent() == nullptr)
+  {
+    std::cout << "parent" << std::endl;
+  }
+  std::cout << redBlackTree->getValue() << redBlackTree->getColor() << std::endl;
   RedBlackTree *right = redBlackTree->getRight();
   if (right != nullptr)
   {
@@ -144,11 +148,12 @@ void TreeProcedure::postOrderTraversal(RedBlackTree *redBlackTree)
 
 void TreeProcedure::fixup(RedBlackTree *node)
 {
-  if (node == nullptr || node->getParent() == nullptr)
+  if (node == nullptr)
   {
     return;
   }
-  RedBlackTree *parent = node->getParent();
+  RedBlackTree* curNode = node;
+  RedBlackTree *parent = curNode->getParent();
   // 当父节点是黑色时加入红色节点不影响特性4成立，当为红色时可能影响特性4成立
   while (parent != nullptr && parent->getColor() == false)
   {
@@ -169,16 +174,17 @@ void TreeProcedure::fixup(RedBlackTree *node)
         parent->setColor(true);
         uncle->setColor(true);
         grandParent->setColor(false);
-        node = grandParent;
+        curNode = grandParent;
+        parent = curNode->getParent();
         continue;
       }
-      else if(node == parent->getRight())
+      if(curNode == parent->getRight())
       {
-        node = parent;
+        curNode = parent;
         // 左旋
-		    leftRotate(node);
+		    leftRotate(curNode);
 	    }
-		  parent = node->getParent();
+		  parent = curNode->getParent();
 		  grandParent = parent->getParent();
 		  parent->setColor(true);
 		  grandParent->setColor(false);
@@ -194,16 +200,17 @@ void TreeProcedure::fixup(RedBlackTree *node)
         parent->setColor(true);
         uncle->setColor(true);
         grandParent->setColor(false);
-        node = grandParent;
+        curNode = grandParent;
+        parent = curNode->getParent();
         continue;
       }
-      else if (node == parent->getLeft())
+      if (curNode == parent->getLeft())
       {
-        node = parent;
+        curNode = parent;
         // 右旋
-        rightRotate(node);
+        rightRotate(curNode);
       }
-      parent = node->getParent();
+      parent = curNode->getParent();
       grandParent = parent->getParent();
       parent->setColor(true);
       grandParent->setColor(false);
@@ -211,7 +218,8 @@ void TreeProcedure::fixup(RedBlackTree *node)
       leftRotate(grandParent);
     }
   }
-  parent = node->getParent();
+  this->root->setColor(true);
+  this->root->setParent(nullptr);
 }
 
 void TreeProcedure::treeInsert(int num)
@@ -237,16 +245,18 @@ void TreeProcedure::treeInsert(int num)
   if (y == nullptr)
   {
     this->root = node;
-    return;
-  }
-  node->setParent(y);
-  if (y->getValue() > num)
-  {
-    y->setLeft(node);
   }
   else
   {
-    y->setRight(node);
+    node->setParent(y);
+    if (y->getValue() > num)
+    {
+      y->setLeft(node);
+    }
+    else
+    {
+      y->setRight(node);
+    }
   }
   fixup(node);
   return;
@@ -277,6 +287,10 @@ void TreeProcedure::leftRotate(RedBlackTree *node)
     {
       parent->setRight(rChild);
     }
+  }
+  else
+  {
+    this->root = rChild;
   }
   rChild->setParent(parent);
   // 获取右孩子的左孩子，如果不为空将其父节点设为node
@@ -317,9 +331,13 @@ void TreeProcedure::rightRotate(RedBlackTree *node)
       parent->setRight(lChild);
     }
   }
+  else
+  {
+    this->root = lChild;
+  }
   lChild->setParent(parent);
   // 获取左孩子的右孩子，如果不为空将其父节点设为node
-  RedBlackTree *grChild = lChild->getLeft();
+  RedBlackTree *grChild = lChild->getRight();
   if (grChild != nullptr)
   {
     grChild->setParent(node);
