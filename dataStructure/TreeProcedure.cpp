@@ -347,3 +347,36 @@ void TreeProcedure::rightRotate(RedBlackTree *node)
   lChild->setRight(node);
   return;
 }
+
+void TreeProcedure::treeDelete(RedBlackTree *node)
+{
+  if (node->getLeft() != nullptr && node->getRight() != nullptr)
+  {
+
+  }
+  else if(node->getLeft() != nullptr)
+  {
+
+  }
+  else if(node->getRight() != nullptr)
+  {
+
+  }
+}
+
+void TreeProcedure::transplant(RedBlackTree *src, RedBlackTree *dest)
+{
+  RedBlackTree *parent = src->getParent();
+  if (parent != nullptr)
+  {
+    if (parent->getLeft() == src)
+    {
+      parent->setLeft(dest);
+    }
+    else 
+    {
+      parent->setRight(dest);
+    }
+  }
+  dest->setParent(parent);
+}
