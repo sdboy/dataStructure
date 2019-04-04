@@ -19,7 +19,7 @@ public:
   void TreeProcedure::treeInsert(int num);
   void TreeProcedure::leftRotate(RedBlackTree *node);
   void TreeProcedure::rightRotate(RedBlackTree *node);
-  void TreeProcedure::treeDelete(RedBlackTree *node);
+  RedBlackTree *TreeProcedure::treeDelete(RedBlackTree *node);
   void TreeProcedure::transplant(RedBlackTree *src, RedBlackTree *dest);
 };
 
