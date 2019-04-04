@@ -417,3 +417,48 @@ void TreeProcedure::transplant(RedBlackTree *src, RedBlackTree *dest)
   }
   return;
 }
+
+RedBlackTree* TreeProcedure::redBlackTreeDelete(RedBlackTree* node)
+{
+  if (node == nullptr)
+  {
+    return nullptr;
+  }
+  // 如果左右都有子节点
+  if (node->getLeft() != nullptr && node->getRight() != nullptr)
+  {
+    RedBlackTree* successor = node->getRight();
+    while (successor != nullptr && successor->getLeft())
+    {
+      successor = successor->getLeft();
+    }
+    if (successor->getParent() != node)
+    {
+      transplant(successor, successor->getRight());
+      successor->setRight(node->getRight());
+      node->getRight()->setParent(successor);
+    }
+    transplant(node, successor);
+    successor->setLeft(node->getLeft());
+    node->getLeft()->setParent(successor);
+  }
+  // 如果只有左子节点
+  else if (node->getLeft() != nullptr)
+  {
+    transplant(node, node->getLeft());
+  }
+  // 如果只有右子节点
+  else if (node->getRight() != nullptr)
+  {
+    transplant(node, node->getRight());
+  }
+  else
+  {
+    transplant(node, nullptr);
+  }
+  node->setParent(nullptr);
+  node->setLeft(nullptr);
+  node->setRight(nullptr);
+  delete node;
+  return this->root;
+}

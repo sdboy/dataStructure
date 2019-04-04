@@ -21,5 +21,6 @@ public:
   void TreeProcedure::rightRotate(RedBlackTree *node);
   RedBlackTree *TreeProcedure::treeDelete(RedBlackTree *node);
   void TreeProcedure::transplant(RedBlackTree *src, RedBlackTree *dest);
+  RedBlackTree *TreeProcedure::redBlackTreeDelete(RedBlackTree* node);
 };
 
