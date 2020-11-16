@@ -22,4 +22,3 @@ public:
   void TreeProcedure::treeDelete(RedBlackTree *node);
   void TreeProcedure::transplant(RedBlackTree *src, RedBlackTree *dest);
 };
-
